@@ -1,0 +1,60 @@
+the subfolders in this directory contain the necessary code required to
+to run the bootstrap hypothesis tests for Questions 5 and 6 of STAT6800
+HW5 2024.
+
+FOLDER STRUCTURE
+----------------
+
+the folder structure is as below. We assume a Linux system is available to run
+the code, with R installed, reasonable parallel capabilities, a GCC compiler to
+build Rcpp extensions and necessary packages (optparse, jpeg, Rcpp, RcppArmadillo).
+
+
+./
+├── README
+├── Q5
+│   ├── calc2.R
+│   ├── calc.R
+│   ├── post.R
+│   ├── subcalc.cpp
+│   └── UnitedColorsOfFall/  // data folder must be added here
+└── Q6
+    ├── calc2.R
+    ├── calc.R
+    ├── jsm.dat // data must be added here
+    ├── post.R
+    └── subcalc.cpp
+
+
+Running Q5
+----------
+
+For Q5, the first hypothesis test, run calc.R using Rscript as follows:
+
+Rscript calc.R -i 10 -n 100
+
+where i refers to the image index (1-30), and n refers to the number of bootstrap samples.
+
+For Q5, the second hypothesis test, run calc2.R using Rscript as follows:
+
+Rscript calc2.R -i 10 -n 100
+
+note calc2.R relies on the files output by calc.R
+
+finally, view the output table as in the PDF using post.R
+
+
+Running Q6
+----------
+
+For Q6, to use the simulated data from a normal distribution run calc.R using Rscript as follows:
+
+Rscript calc.R -k 20 -n 100
+
+where k refers to the number of singular values to use, and n refers to the number of bootstrap samples.
+
+For Q6, to use the simulated data as a bootstrap from Z run calc2.R using Rscript as follows:
+
+Rscript calc2.R -k 20 -n 100
+
+finally, view the output table as in the PDF using post.R
